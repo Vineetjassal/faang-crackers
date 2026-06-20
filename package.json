@@ -1,0 +1,13 @@
+{
+  "name": "faang-crackers",
+  "version": "1.0.0",
+  "description": "Community database of people who cracked FAANG & MAANG",
+  "scripts": {
+    "dev": "vercel dev",
+    "build": "echo 'Static frontend — no build step needed'"
+  },
+  "dependencies": {},
+  "devDependencies": {
+    "vercel": "^37.0.0"
+  }
+}
