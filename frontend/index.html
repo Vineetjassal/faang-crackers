@@ -3,116 +3,134 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>FAANG Crackers — People Who Cracked Big Tech</title>
+  <title>FAANG Crackers — AI Resume Analyser for Big Tech</title>
   <link rel="stylesheet" href="style.css" />
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;900&display=swap" rel="stylesheet" />
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700;900&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet" />
+  <script src="https://unpkg.com/pdf-lib@1.17.1/dist/pdf-lib.min.js"></script>
+  <script src="https://unpkg.com/pdfjs-dist@3.11.174/build/pdf.min.js"></script>
 </head>
 <body>
 
-  <!-- HERO -->
-  <section class="hero">
-    <div class="hero-bg"></div>
-    <div class="hero-content">
-      <div class="resume-card">
-        <div class="resume-header">
-          <h2>Priya Sharma</h2>
-          <p>New Delhi, India &nbsp;|&nbsp; priya@gmail.com &nbsp;|&nbsp; linkedin.com/in/priya &nbsp;|&nbsp; github.com/priya</p>
+<!-- ===== HERO ===== -->
+<section class="hero">
+  <!-- Clouds background via CSS -->
+  <div class="clouds">
+    <div class="cloud cloud1"></div>
+    <div class="cloud cloud2"></div>
+    <div class="cloud cloud3"></div>
+    <div class="cloud cloud4"></div>
+  </div>
+
+  <div class="hero-inner">
+    <!-- Floating Resume Card -->
+    <div class="resume-float" id="resumePreview">
+      <div class="resume-paper">
+        <div class="rp-name">Chungin Roy Lee</div>
+        <div class="rp-contact">New York, NY &nbsp;|&nbsp; roy.lee@columbia.edu &nbsp;|&nbsp; linkedin.com/in/roy-lee &nbsp;|&nbsp; github.com/roylee</div>
+        <div class="rp-section">
+          <div class="rp-section-title">Education</div>
+          <div class="rp-entry">
+            <span class="rp-highlight-blue">Columbia University</span>
+            <span class="rp-date">Sep 2024 – May 2025</span>
+          </div>
+          <div class="rp-sub">B.S. in Computer Science <span class="rp-date">New York, NY</span></div>
         </div>
-        <div class="resume-section">
-          <div class="resume-label">Education</div>
-          <div class="resume-entry highlight-blue">IIT Delhi — B.Tech Computer Science <span>2019–2023</span></div>
+        <div class="rp-section">
+          <div class="rp-section-title">Experience</div>
+          <div class="rp-entry">
+            <span class="rp-highlight-orange">Interview Coder</span>
+            <span class="rp-date">Feb 2025 – Present</span>
+          </div>
+          <div class="rp-sub italic">Founder &amp; Developer <span class="rp-date">Remote</span></div>
+          <div class="rp-bullet">– Built a LeetCode automation tool leveraging OCR and OpenAI GPT-4.</div>
+          <div class="rp-bullet rp-strike">– Grew user base to 70k+ within months; <span class="rp-highlight-yellow">generated $370K MRR</span> through viral distribution.</div>
+          <div class="rp-bullet rp-strike rp-dim">– Received internship offers from Amazon, TikTok, Meta via usage of the tool —</div>
         </div>
-        <div class="resume-section">
-          <div class="resume-label">Experience</div>
-          <div class="resume-entry highlight-orange">Google — Software Engineer L4 <span>2023–Present</span></div>
-          <div class="resume-bullet">— Built distributed systems serving 200M+ daily active users.</div>
-          <div class="resume-bullet highlight-strikethrough">— Received offers from Amazon, Meta, Google simultaneously.</div>
-        </div>
-      </div>
-      <div class="hero-text">
-        <h1>They Cracked FAANG.<br />You Can Too.</h1>
-        <p>Real profiles of people who landed offers at <strong>Meta, Apple, Amazon, Netflix, Google, Microsoft</strong> and more.</p>
-        <div class="cta-group">
-          <button class="btn-primary" onclick="document.getElementById('profiles').scrollIntoView({behavior:'smooth'})">🔥 Browse Crackers</button>
-          <button class="btn-secondary" onclick="document.getElementById('submit').scrollIntoView({behavior:'smooth'})">➕ Submit Your Profile</button>
-        </div>
-        <p class="no-signup">*no signup required to browse</p>
       </div>
     </div>
-    <div class="trust-bar">
-      <span>🏆 #1 FAANG Community Database</span>
-      <span>★★★★★</span>
-      <span>Trusted by 500+ engineers from top colleges</span>
+
+    <!-- Hero CTA -->
+    <div class="hero-cta">
+      <h1>Your Resume Has 30s to Live.<br />Will It Pass FAANG Recruiter?</h1>
+      <p class="hero-sub">Our AI judges it like it’s the final round<br />of Squid Game for
+        <span class="company-icons">
+          <img src="https://cdn.jsdelivr.net/npm/simple-icons@v11/icons/meta.svg" alt="Meta" />
+          <img src="https://cdn.jsdelivr.net/npm/simple-icons@v11/icons/apple.svg" alt="Apple" />
+          <img src="https://cdn.jsdelivr.net/npm/simple-icons@v11/icons/amazon.svg" alt="Amazon" />
+          <img src="https://cdn.jsdelivr.net/npm/simple-icons@v11/icons/google.svg" alt="Google" />
+          <img src="https://cdn.jsdelivr.net/npm/simple-icons@v11/icons/netflix.svg" alt="Netflix" />
+        </span>
+      </p>
+
+      <!-- Upload Box -->
+      <div class="upload-zone" id="uploadZone">
+        <input type="file" id="resumeFile" accept=".pdf" hidden />
+        <button class="btn-upload" id="uploadBtn">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 15v4a2 2 0 01-2 2H5a2 2 0 01-2-2v-4"/><polyline points="17 8 12 3 7 8"/><line x1="12" y1="3" x2="12" y2="15"/></svg>
+          Upload Resume
+        </button>
+        <p class="upload-hint">*no signup required &nbsp;&bull;&nbsp; PDF only</p>
+      </div>
+
+      <div class="rating-bar">
+        <span class="rating-badge">#1 AI Resume Roaster</span>
+        <span class="stars">★★★★★</span>
+        <span class="rating-sub">Trusted by 1,000+ students from top colleges</span>
+      </div>
     </div>
-  </section>
+  </div>
 
-  <!-- STATS -->
-  <section class="stats-bar">
-    <div class="stat"><span id="stat-total">6</span><label>Profiles</label></div>
-    <div class="stat"><span id="stat-companies">6</span><label>Companies</label></div>
-    <div class="stat"><span id="stat-countries">3</span><label>Countries</label></div>
-    <div class="stat"><span id="stat-avg-yoe">2.0</span><label>Avg YoE</label></div>
-  </section>
+  <div class="hero-bottom-names">
+    <span>almas</span>
+    <span>felix</span>
+    <a href="#">terms of service</a>
+  </div>
+</section>
 
-  <!-- FILTERS -->
-  <section class="filters" id="profiles">
-    <h2>Browse FAANG Crackers</h2>
-    <div class="filter-row">
-      <select id="filter-company">
-        <option value="">All Companies</option>
-        <option>Google</option><option>Meta</option><option>Amazon</option>
-        <option>Apple</option><option>Netflix</option><option>Microsoft</option><option>OpenAI</option>
-      </select>
-      <select id="filter-role">
-        <option value="">All Roles</option>
-        <option value="SWE">Software Engineer</option>
-        <option value="ML">ML Engineer</option>
-        <option value="PM">Product Manager</option>
-        <option value="DS">Data Scientist</option>
-      </select>
-      <input type="text" id="filter-search" placeholder="Search by name or college..." />
+<!-- ===== ANALYSIS SECTION (hidden until upload) ===== -->
+<section class="analysis-section" id="analysisSection" style="display:none">
+  <div class="analysis-inner">
+
+    <!-- Left: annotated resume -->
+    <div class="analysis-left">
+      <h2>Your Resume <span class="tag-score" id="scoreTag">Analysing...</span></h2>
+      <div class="annotated-resume" id="annotatedResume">
+        <div class="loading-spinner" id="loadingSpinner">
+          <div class="spinner"></div>
+          <p>Analysing your resume with AI…</p>
+        </div>
+      </div>
     </div>
-  </section>
 
-  <!-- PROFILES GRID -->
-  <section class="profiles-grid" id="profiles-grid"></section>
-
-  <!-- SUBMIT -->
-  <section class="submit-section" id="submit">
-    <h2>Did You Crack FAANG? 🎉</h2>
-    <p>Add your profile to inspire thousands of future engineers.</p>
-    <form class="submit-form" id="submitForm">
-      <div class="form-row">
-        <input type="text" name="name" placeholder="Full Name *" required />
-        <input type="text" name="college" placeholder="College / University *" required />
+    <!-- Right: feedback panel -->
+    <div class="analysis-right">
+      <div class="feedback-panel" id="feedbackPanel">
+        <h3>AI Feedback</h3>
+        <div id="feedbackList"></div>
       </div>
-      <div class="form-row">
-        <select name="company" required>
-          <option value="">Company you cracked *</option>
-          <option>Google</option><option>Meta</option><option>Amazon</option>
-          <option>Apple</option><option>Netflix</option><option>Microsoft</option><option>OpenAI</option>
-        </select>
-        <select name="role">
-          <option value="">Role</option>
-          <option>Software Engineer</option><option>ML Engineer</option>
-          <option>Product Manager</option><option>Data Scientist</option>
-        </select>
-      </div>
-      <div class="form-row">
-        <input type="number" name="yoe" placeholder="Years of Experience" min="0" max="30" />
-        <input type="number" name="year" placeholder="Year of Offer (e.g. 2024)" />
-      </div>
-      <textarea name="tip" placeholder="Your top interview tip (optional)" rows="3"></textarea>
-      <input type="url" name="linkedin" placeholder="LinkedIn URL (optional)" />
-      <button type="submit" class="btn-primary">Submit My Profile 🚀</button>
-    </form>
-    <div id="form-success" style="display:none;" class="success-msg">✅ Profile submitted! It will appear after review.</div>
-  </section>
 
-  <footer>
-    <p>Made with ❤️ by <a href="https://github.com/Vineetjassal">Vineet Jassal</a> &nbsp;|&nbsp; <a href="#">Terms of Service</a></p>
-  </footer>
+      <div class="score-card" id="scoreCard" style="display:none">
+        <div class="score-ring">
+          <svg viewBox="0 0 100 100">
+            <circle cx="50" cy="50" r="42" stroke="#eee" stroke-width="10" fill="none"/>
+            <circle cx="50" cy="50" r="42" stroke="#6366f1" stroke-width="10" fill="none"
+              stroke-dasharray="264" id="scoreCircle" stroke-dashoffset="264"
+              stroke-linecap="round" transform="rotate(-90 50 50)"/>
+          </svg>
+          <span id="scoreNumber">0</span>
+        </div>
+        <p>FAANG Readiness Score</p>
+        <div class="score-breakdown" id="scoreBreakdown"></div>
+      </div>
+    </div>
 
-  <script src="app.js"></script>
+  </div>
+</section>
+
+<footer class="main-footer">
+  <p>Made with ❤️ by <a href="https://github.com/Vineetjassal">Vineet Jassal</a></p>
+</footer>
+
+<script src="app.js"></script>
 </body>
 </html>
