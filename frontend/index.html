@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>FAANG Crackers — People Who Cracked Big Tech</title>
+  <link rel="stylesheet" href="style.css" />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;900&display=swap" rel="stylesheet" />
+</head>
+<body>
+
+  <!-- HERO SECTION -->
+  <section class="hero">
+    <div class="hero-bg"></div>
+    <div class="hero-content">
+      <div class="resume-card">
+        <div class="resume-header">
+          <h2>Priya Sharma</h2>
+          <p>New Delhi, India | priya@gmail.com | linkedin.com/in/priya | github.com/priya</p>
+        </div>
+        <div class="resume-section">
+          <div class="resume-label">Education</div>
+          <div class="resume-entry highlight-blue">IIT Delhi — B.Tech Computer Science <span>2019–2023</span></div>
+        </div>
+        <div class="resume-section">
+          <div class="resume-label">Experience</div>
+          <div class="resume-entry highlight-orange">Google — Software Engineer L4 <span>2023–Present</span></div>
+          <div class="resume-bullet">— Built distributed systems serving 200M+ daily active users.</div>
+          <div class="resume-bullet highlight-strikethrough">— Received offers from Amazon, Meta, Google simultaneously.</div>
+        </div>
+      </div>
+      <div class="hero-text">
+        <h1>They Cracked FAANG.<br />You Can Too.</h1>
+        <p>Real profiles of people who landed offers at <strong>Meta, Apple, Amazon, Netflix, Google, Microsoft</strong> and more.</p>
+        <div class="cta-group">
+          <button class="btn-primary" onclick="document.getElementById('profiles').scrollIntoView({behavior:'smooth'})">🔥 Browse Crackers</button>
+          <button class="btn-secondary" onclick="document.getElementById('submit').scrollIntoView({behavior:'smooth'})">➕ Submit Your Profile</button>
+        </div>
+        <p class="no-signup">*no signup required to browse</p>
+      </div>
+    </div>
+    <div class="trust-bar">
+      <span>🏆 #1 FAANG Community Database</span>
+      <span>★★★★★</span>
+      <span>Trusted by 500+ engineers from top colleges</span>
+    </div>
+  </section>
+
+  <!-- STATS BAR -->
+  <section class="stats-bar">
+    <div class="stat"><span id="stat-total">0</span><label>Profiles</label></div>
+    <div class="stat"><span id="stat-companies">7</span><label>Companies</label></div>
+    <div class="stat"><span id="stat-countries">12</span><label>Countries</label></div>
+    <div class="stat"><span id="stat-avg-yoe">2.4</span><label>Avg YoE</label></div>
+  </section>
+
+  <!-- FILTERS -->
+  <section class="filters" id="profiles">
+    <h2>Browse FAANG Crackers</h2>
+    <div class="filter-row">
+      <select id="filter-company">
+        <option value="">All Companies</option>
+        <option value="Google">Google</option>
+        <option value="Meta">Meta</option>
+        <option value="Amazon">Amazon</option>
+        <option value="Apple">Apple</option>
+        <option value="Netflix">Netflix</option>
+        <option value="Microsoft">Microsoft</option>
+        <option value="OpenAI">OpenAI</option>
+      </select>
+      <select id="filter-role">
+        <option value="">All Roles</option>
+        <option value="SWE">Software Engineer</option>
+        <option value="ML">ML Engineer</option>
+        <option value="PM">Product Manager</option>
+        <option value="DS">Data Scientist</option>
+      </select>
+      <input type="text" id="filter-search" placeholder="Search by name or college..." />
+    </div>
+  </section>
+
+  <!-- PROFILES GRID -->
+  <section class="profiles-grid" id="profiles-grid"></section>
+
+  <!-- SUBMIT FORM -->
+  <section class="submit-section" id="submit">
+    <h2>Did You Crack FAANG? 🎉</h2>
+    <p>Add your profile to inspire thousands of future engineers.</p>
+    <form class="submit-form" id="submitForm">
+      <div class="form-row">
+        <input type="text" name="name" placeholder="Full Name *" required />
+        <input type="text" name="college" placeholder="College / University *" required />
+      </div>
+      <div class="form-row">
+        <select name="company" required>
+          <option value="">Company you cracked *</option>
+          <option>Google</option><option>Meta</option><option>Amazon</option>
+          <option>Apple</option><option>Netflix</option><option>Microsoft</option><option>OpenAI</option>
+        </select>
+        <select name="role">
+          <option value="">Role</option>
+          <option>Software Engineer</option><option>ML Engineer</option>
+          <option>Product Manager</option><option>Data Scientist</option>
+        </select>
+      </div>
+      <div class="form-row">
+        <input type="number" name="yoe" placeholder="Years of Experience" min="0" max="30" />
+        <input type="number" name="year" placeholder="Year of Offer (e.g. 2024)" min="2015" max="2030" />
+      </div>
+      <textarea name="tip" placeholder="Your top interview tip (optional)" rows="3"></textarea>
+      <input type="url" name="linkedin" placeholder="LinkedIn URL (optional)" />
+      <button type="submit" class="btn-primary">Submit My Profile 🚀</button>
+    </form>
+    <div id="form-success" style="display:none;" class="success-msg">✅ Profile submitted! It will appear after review.</div>
+  </section>
+
+  <footer>
+    <p>Made with ❤️ by <a href="https://github.com/Vineetjassal">Vineet Jassal</a> &nbsp;|&nbsp; <a href="#">Terms of Service</a></p>
+  </footer>
+
+  <script src="app.js"></script>
+</body>
+</html>

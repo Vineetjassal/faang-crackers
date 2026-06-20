@@ -1,0 +1,8 @@
+[
+  { "name":"Priya Sharma",  "college":"IIT Delhi",      "company":"Google",    "role":"SWE", "yoe":0, "year":2023, "tip":"Focus on system design + LeetCode mediums.", "linkedin":"https://linkedin.com" },
+  { "name":"Rahul Gupta",   "college":"BITS Pilani",    "company":"Meta",      "role":"ML",  "yoe":2, "year":2024, "tip":"ML design rounds at Meta are underrated.",    "linkedin":"https://linkedin.com" },
+  { "name":"Ananya Iyer",   "college":"NIT Trichy",     "company":"Amazon",    "role":"SWE", "yoe":1, "year":2024, "tip":"STAR format for behavioral rounds.",          "linkedin":"" },
+  { "name":"Karan Mehta",   "college":"IIT Bombay",     "company":"Microsoft", "role":"SWE", "yoe":3, "year":2023, "tip":"Microsoft cares about communication.",         "linkedin":"https://linkedin.com" },
+  { "name":"Sneha Nair",    "college":"IIIT Hyderabad", "company":"Apple",     "role":"SWE", "yoe":2, "year":2024, "tip":"Study Apple products deeply.",                 "linkedin":"" },
+  { "name":"Arjun Singh",   "college":"DTU Delhi",      "company":"OpenAI",   "role":"ML",  "yoe":4, "year":2025, "tip":"Deep understanding of transformers is key.",   "linkedin":"https://linkedin.com" }
+]
